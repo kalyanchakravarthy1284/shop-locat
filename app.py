@@ -4,7 +4,7 @@ import sqlite3
 app = Flask(__name__)
 
 def get_db():
-    return sqlite3.connect("shop.db")
+    return sqlite3.connect("/data/shop.db")
 
 # Create table
 with get_db() as db:
