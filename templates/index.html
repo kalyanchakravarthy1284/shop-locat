@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shop Item Locator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="glassApp">
+
+    <div class="topBar">
+      <h1>Shop Item Locator</h1>
+      <input id="searchInput" placeholder="Enter item name">
+      <button onclick="searchItem()">Search</button>
+      <div id="result"></div>
+      <div id="pointer"></div>
+    </div>
+
+    <div class="mainArea">
+      <div class="mapArea">
+        <h2>2D Shop Map</h2>
+        <div id="map">
+          <div class="rack" id="A1">
+            <div class="row" data-row="1">A1-R1</div>
+            <div class="row" data-row="2">A1-R2</div>
+            <div class="row" data-row="3">A1-R3</div>
+          </div>
+          <div class="rack" id="A2">
+            <div class="row" data-row="1">A2-R1</div>
+            <div class="row" data-row="2">A2-R2</div>
+            <div class="row" data-row="3">A2-R3</div>
+          </div>
+          <div class="rack" id="B1">
+            <div class="row" data-row="1">B1-R1</div>
+            <div class="row" data-row="2">B1-R2</div>
+            <div class="row" data-row="3">B1-R3</div>
+          </div>
+          <div class="rack" id="B2">
+            <div class="row" data-row="1">B2-R1</div>
+            <div class="row" data-row="2">B2-R2</div>
+            <div class="row" data-row="3">B2-R3</div>
+          </div>
+        </div>
+
+        <button onclick="toggleAddForm()">➕ Add Product</button>
+
+        <div id="addForm" class="popupForm">
+          <div class="popupBox">
+            <h3>Enter Product Details</h3>
+            <input id="pName" placeholder="Name">
+            <input id="pRack" placeholder="Rack (A1, B1)">
+            <input id="pRow" placeholder="Row (1-3)">
+            <input id="pQty" placeholder="Quantity">
+            <button onclick="addProduct()">Save</button>
+            <button onclick="toggleAddForm()">Cancel</button>
+          </div>
+        </div>
+
+        <h3>Available Items</h3>
+        <table id="productTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Rack</th>
+              <th>Row</th>
+              <th>Qty</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="view3D">
+        <h2>3D View</h2>
+        <div id="threeContainer"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
